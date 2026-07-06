@@ -6,8 +6,9 @@ describe('Health Endpoints', () => {
     it('should return 200 and status UP', async () => {
       const res = await request(app).get('/api/health');
       expect(res.statusCode).toEqual(200);
-      expect(res.body).toHaveProperty('status', 'UP');
-      expect(res.body).toHaveProperty('timestamp');
+      expect(res.body.success).toBe(true);
+      expect(res.body.data).toHaveProperty('status', 'UP');
+      expect(res.body.data).toHaveProperty('timestamp');
     });
   });
 });

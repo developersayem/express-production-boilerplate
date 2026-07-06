@@ -18,8 +18,13 @@ registry.registerComponent('securitySchemes', 'bearerAuth', {
 export const HealthResponseSchema = registry.register(
   'HealthResponse',
   z.object({
-    status: z.string().openapi({ example: 'UP' }),
-    timestamp: z.string().openapi({ example: '2026-07-06T12:00:00Z' }),
+    statusCode: z.number().openapi({ example: 200 }),
+    success: z.boolean().openapi({ example: true }),
+    message: z.string().openapi({ example: 'Server is healthy' }),
+    data: z.object({
+      status: z.string().openapi({ example: 'UP' }),
+      timestamp: z.string().openapi({ example: '2026-07-06T12:00:00Z' }),
+    }),
   })
 );
 
