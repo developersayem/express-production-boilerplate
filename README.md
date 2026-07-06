@@ -4,6 +4,10 @@ A production-ready Node.js & Express.js backend boilerplate built with TypeScrip
 
 This setup is designed for building highly scalable and maintainable RESTful APIs with automatic Swagger documentation.
 
+## 📚 Documentation
+- [Testing & Monitoring Guide](./docs/TESTING_AND_MONITORING.md)
+- [Media Storage & Optimization Guide](./docs/MEDIA_STORAGE_GUIDE.md)
+
 ## 🛠 Tech Stack
 
 - **Framework**: [Node.js](https://nodejs.org/) + [Express.js](https://expressjs.com/)
