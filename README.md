@@ -95,7 +95,28 @@ npm run test
 ```
 
 ## 📝 Creating a New Module
+This project strictly follows a **Module-based (Feature-based) Architecture**. 
+
 1. Create a new folder inside `src/modules/` (e.g., `user`).
-2. Add `user.controller.ts`, `user.route.ts`, and `user.schema.ts`.
-3. Register the Zod schema in `src/docs/openapi.ts` for Swagger documentation.
-4. Mount the route in `src/app.ts`.
+2. Add `user.controller.ts`, `user.route.ts`, `user.schema.ts`, and `user.service.ts`.
+3. Keep controllers clean: write business logic in `user.service.ts`.
+4. Register the Zod schema in `src/docs/openapi.ts` for Swagger documentation.
+5. Mount the route in `src/app.ts`.
+
+## 🗄️ Database Schema Organization (Drizzle ORM)
+For large projects, **DO NOT put all tables in a single `src/db/schema.ts` file**. 
+Split them into logical files inside a `schema/` folder:
+
+```text
+src/db/
+├── schema/                 # All table definitions go here
+│   ├── index.ts            # Exports all files (CRITICAL)
+│   ├── users.schema.ts     # Users, Roles
+│   └── products.schema.ts  # Products, Categories
+└── index.ts                # Main DB connection
+```
+Inside `src/db/schema/index.ts`, export everything:
+```typescript
+export * from './users.schema';
+export * from './products.schema';
+```
